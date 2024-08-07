@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel='shortcut icon' sizes='256x256' href='../static/images/CharyLogoSmall.svg'>
+
+        <!-- Google Font imports -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,600&family=Pacifico&display=swap" rel="stylesheet">
+
+        <!-- CSS Stylesheets -->
+        <link rel='stylesheet' href='../static/css/style.css'>
+        <link rel='stylesheet' media='screen and (min-width:768px)' href='../static/css/about/about.css'>
+        <link rel='stylesheet' media='screen and (max-width:767px)' href='../static/css/about/about-mobile.css'>
+
+        <!-- JavaScript links -->
+        <script src='../static/javascript/landing.js'></script>
+        <script src='../static/javascript/script.js'></script>
+
+        <Title>Chary | About</Title>
+    </head>
+
+    <body onload="fillProfilePics()">
+        <div id="header-container">
+            <header>
+                <img id='large-logo' src="../static/images/CharyLogo.svg" onclick="homeAction()" alt='Chary logo'>
+                <img id='toggle-icon' class="hamburg icon" src="../static/images/hamburger-icon.svg" onclick="toggleMenu()" alt="toggle menu button">
+
+                <nav id="website-nav">{{nav | safe}}</nav>
+            </header>
+        </div>
+
+        <div class="content non-header" id="about">
+            <h1 id="about-header">About</h1>
+            <div id="definition">
+                <h3 id="dict-header">chary • <span id='dict-ipa'>/ˈtʃɛər i/</span></h3>
+                <p>adjective</p>
+                <ol>
+                    <li>discreetly cautious</li>
+                    <ol type="a">
+                        <li>hesitant and vigilant about dangers and risks</li>
+                        <li>slow to grant, accept, or expend</li>
+                    </ol>
+                </ol>
+                <p id="citation">“Chary.” Merriam-Webster.com Dictionary, Merriam-Webster, <a class="normal-link" href="https://www.merriam-webster.com/dictionary/chary">https://www.merriam-webster.com/dictionary/chary</a>.</p>
+            </div>
+            <div id="summary">
+                <h2>App Summary</h2>
+                <p>Chary is a tool to help users become 
+                    more cautious and thoughtful with how they spend their money. 
+                    Chary makes budgeting easy. Users can keep track of their 
+                    expenses, set spending goals, and visualise how well they do over 
+                    time. And because 'chary' sounds like 'cherry', Chary is cherry-themed to embrace the pun!</p>
+            </div>
+            <div id="about-app">
+                <h2>Development Details</h2>
+                <p>
+                    Chary was developed by one person, Asha Ivey. This app began developement during 
+                    the summer of 2022 as a passion project and launched for the first time in December of 2023. 
+                </p>
+                    
+                <p>
+                    Chary was created using Python and the framework Flask for the backend. The frontend was created using 
+                    HTML, CSS, and vanilla Javascript. 
+                    This app uses Google Cloud's firestore to store data 
+                    and is hosted using Google App Engine. This app also takes advantage
+                    of Google's OAuth for signing users in and Chartjs for almost all 
+                    of the graphs.
+                </p>
+                
+                <p>
+                    Most of the assets, including icons, animations, and images, were created specifically for 
+                    Chary by Asha Ivey. The images on the landing page and the profile image options are sourced from 
+                    <a class="normal-link" href="http://www.undraw.co">undraw.co</a>.
+                </p>
+
+                <p><a class="normal-link" href="https://github.com/aivey65/Chary">Click here</a> to view the Github repository for Chary. </p>
+            </div>
+            <div id="about-asha">
+                <h2>About the Creator</h2>
+                <img src="../static/images/asha-flowerprofile.jpg">
+                <p> Chary was created by Asha Ivey, a software developer. She graduated from the University of Illinois at Urbana-Champaign in 2022.</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class='contact-methods'> 
+                <div class='contact-icon' title="Asha's Github">
+                    <a target="_blank" rel="noopener noreferrer" href='https://github.com/aivey65' alt="Github logo">
+                        <img src="../static/images/GitHub-Mark-Light-64px.png" alt="Github logo">
+                    </a>
+                </div> 
+                <div class='contact-icon' title="Asha's LinkedIn">
+                    <a target="_blank" rel="noopener noreferrer" href='https://www.linkedin.com/in/ashaiv/' alt="LinkedIn logo">
+                        <img src="../static/images/LI-In-Bug.png" alt="LinkedIn logo">
+                    </a>
+                </div>
+                <div class='contact-icon' title="Asha's personal portfolio website">
+                    <a target="_blank" rel="noopener noreferrer" href='https://www.ashaiv.com' alt="Logo for Asha's personal portfolio website">
+                        <img src="../static/images/AshaIV-logo-light.svg" alt="Logo for Asha's personal portfolio website">
+                    </a>
+                </div>
+            </div> 
+            <div id="legal">
+                <div class="legal-button">
+                    <a href="/privacy">Privacy Policy</a>
+                </div>
+                <span>|</span>
+                <div class="legal-button">
+                    <a href="/terms_of_service">Terms of Service</a>
+                </div>
+                <span>|</span>
+                <div class="legal-button">
+                    <a href="/contact">Contact</a>
+                </div>
+                <span>|</span>
+                <div class="report-button">
+                    <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLScy5GtuSRAn-IBCe71kLlTfBwwP0fTXXX7eG1fFd_Puev9vbw/viewform?usp=sf_link" alt="Link to report an issue">Report Issue</a>
+                </div>
+            </div>
+            <div class="btt-icon" onclick="bttAction()">
+                <img class="icon" src="../static/images/CharyLogoSmall.svg" alt="Simplified version of the Chary logo. Scrolls to top of page when clicked.">            
+            </div>
+        </div>
+    </body>
+</html>

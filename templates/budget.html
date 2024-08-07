@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel='shortcut icon' sizes='256x256' href='../static/images/CharyLogoSmall.svg'>
+
+        <!-- Google Font imports -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,600&family=Pacifico&display=swap" rel="stylesheet">
+
+        <!-- CSS Stylesheets -->
+        <link rel='stylesheet' href='../static/css/style.css'>
+        <link rel='stylesheet' media='screen and (min-width:768px)' href='../static/css/budget/budget.css'>
+        <link rel='stylesheet' media='screen and (max-width:767px)' href='../static/css/budget/budget-mobile.css'>
+
+        <!-- JavaScript links -->
+        <script src='../static/javascript/script.js'></script>
+        <script src='../static/javascript/budget.js'></script>
+
+        <!-- Third-party links -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.js"></script>
+        
+        <Title>Chary | Budget Detailed View</Title>
+    </head>
+
+    <body onload="loadBudget('{{id}}', '{{currentStartDate}}', '{{currentEndDate}}')">
+        <div id="header-container">
+            <header>
+                <img id='large-logo' src="../static/images/CharyLogo.svg" onclick="homeAction()" alt='Chary logo'>
+                <img id='toggle-icon' class="hamburg icon" src="../static/images/hamburger-icon.svg" onclick="toggleMenu()" alt="toggle menu button">
+
+                <nav id="website-nav">{{nav | safe}}</nav>
+            </header>
+        </div>
+
+        <div id="page-content" class="content non-header">
+            <button id="back-button" onclick="dashboardBudgetAction()">⟨ Back</button>
+            <div id="budget-main">
+                <div id="budget-basic" class="main-container module">
+                    <div id="details-chart-container"></div>
+                    <div id="details-head">
+                        <h3 id="details-name" class="module-header"></h3>
+                        <div class="placeholder placeholder-h3"></div>
+                        <div id="details-recurring">
+                            <div class="placeholder placeholder-p"></div>
+                            <img id='recur-img' class="recur-img"/>
+                            <span id="recur-description"></span>
+                        </div>
+                    </div>
+                    <div id="viewing-date-container">
+                        <p class="label">Viewing Dates</p>
+                        <div id="viewing-dates">
+                            <form id="start-date-form">
+                                <input id="viewing-start-date" type="date" title="Current Viewing Date">
+                            </form>
+                            <p>to</p>
+                            <p id="viewing-end-date"></p>
+                            <div class="placeholder placeholder-p"></div>
+                        </div>
+                    </div>
+                    <div id="stat-container">
+                        <h3 id="stat-summary"></h3>
+                        <p id="quick-stat"></p>
+                        <div class="placeholder placeholder-p"></div>
+                    </div>
+                    <div id="description">
+                        <p class="label">Description</p>
+                        <p id="details-description"></p>
+                        <div class="placeholder placeholder-long"></div>
+                        <div class="placeholder placeholder-long"></div>
+                        <div class="placeholder placeholder-long"></div>
+                    </div>
+                    <div id="date-start">
+                        <p class="label">Start Date</p>
+                        <p id="details-date"></p>
+                        <div class="placeholder placeholder-p"></div>
+                    </div>
+                    <div id="date-end">
+                        <p class="label">End Date</p>
+                        <p id="details-date-end"></p>
+                        <div class="placeholder placeholder-p"></div>
+                    </div>
+                    <div id="budget-break"></div>
+                    <div id="options-container">
+                        <img id="options-icon-toggle" class="options-img" src="../static/images/Options-icon.svg"/>
+                        <div id="options-panel" class="options-panel options" style="display: none;">
+                            <p class="options-title">Options</p>
+                            <div id="edit-div" class="budget-edit options">
+                                <img class="update-img options" src="../static/images/EditButtonSM.svg" alt="Edit icon"/>
+                                <h4 class="options">Edit</h4>
+                            </div>
+                            <div id="copy-div" class="budget-copy options">
+                                <img class="copy-img options" src="../static/images/DuplicateIcon.svg" alt="Copy icon"/>
+                                <h4 class="options">Duplicate</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="budget-expenses" class="main-container module">
+                    <h3 class="module-header">Finalized Expenses</h3>
+                    <button id="add-expense-button" onclick="createExpenseLink()" class="add-icon"><img src="../static/images/PlusIcon.svg" alt="Add icon"></button>
+                    <div id="expense-container"></div>
+                </div>
+
+                <div id="upcoming-expenses" class="main-container module">
+                    <h3 class="module-header">Upcoming Expenses</h3>
+                    <div id="upcoming-expense-container"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class='contact-methods'> 
+                <div class='contact-icon' title="Asha's Github">
+                    <a  target="_blank" rel="noopener noreferrer" href='https://github.com/aivey65' alt="Github logo">
+                        <img src="../static/images/GitHub-Mark-Light-64px.png" alt="Github logo">
+                    </a>
+                </div> 
+                <div class='contact-icon' title="Asha's LinkedIn">
+                    <a target="_blank" rel="noopener noreferrer" href='https://www.linkedin.com/in/ashaiv/' alt="LinkedIn logo">
+                        <img src="../static/images/LI-In-Bug.png" alt="LinkedIn logo">
+                    </a>
+                </div>
+                <div class='contact-icon' title="Asha's personal portfolio website">
+                    <a target="_blank" rel="noopener noreferrer" href='https://www.ashaiv.com' alt="Logo for Asha's personal portfolio website">
+                        <img src="../static/images/AshaIV-logo-light.svg" alt="Logo for Asha's personal portfolio website">
+                    </a>
+                </div>
+            </div> 
+            <div id="legal">
+                <div class="legal-button">
+                    <a href="/privacy">Privacy Policy</a>
+                </div>
+                <span>|</span>
+                <div class="legal-button">
+                    <a href="/terms_of_service">Terms of Service</a>
+                </div>
+                <span>|</span>
+                <div class="legal-button">
+                    <a href="/contact">Contact</a>
+                </div>
+                <span>|</span>
+                <div class="report-button">
+                    <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLScy5GtuSRAn-IBCe71kLlTfBwwP0fTXXX7eG1fFd_Puev9vbw/viewform?usp=sf_link" alt="Link to report an issue">Report Issue</a>
+                </div>
+            </div>
+            <div class="btt-icon" onclick="bttAction()">
+                <img class="icon" src="../static/images/CharyLogoSmall.svg" alt="Simplified version of the Chary logo. Scrolls to top of page when clicked.">            
+            </div>
+        </div>
+    </body>
+</html>
